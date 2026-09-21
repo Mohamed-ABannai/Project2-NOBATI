@@ -56,8 +56,6 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing app
 
 ## Routes
 
-| Method | Route | Description |
-|--------|-------|-------------|
 
 
 
@@ -76,3 +74,4 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing app
 
 
 ## Credits
+
