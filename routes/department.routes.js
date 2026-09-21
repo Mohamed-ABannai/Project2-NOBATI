@@ -1,11 +1,6 @@
 const router = require("express").Router()
 const Department=require('../models/Department')
 
-router.get('/',(req,res)=>{
-    res.render('homepage.ejs')
-})
-
-
 
 router.get('/create',(req,res)=>{
 
@@ -24,6 +19,12 @@ res.redirect('/departments/create')
 })
 
 
+router.get('/',async(req,res)=>{
+
+const allDepartment=await Department.find()
+res.render('departments/allDepartments.ejs',{allDep:allDepartment})
+
+})
 
 
 
