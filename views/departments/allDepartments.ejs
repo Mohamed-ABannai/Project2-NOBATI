@@ -12,8 +12,8 @@
 
 <%for(let dep of allDep){ %>
 
-<p>name: <%= dep.name %></p>
-<p>description: <%= dep.description %></p>
+<p><%= dep.name %></p>
+<p><%= dep.description %></p>
 
 <form action="/departments/<%= dep._id %>?_method=DELETE" method="post">
 <button type="submit">Delete</button>

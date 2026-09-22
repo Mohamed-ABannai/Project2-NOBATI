@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const {MongoStore} = require("connect-mongo");
 const connectToDB = require('./db.js')
 
+
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
@@ -16,7 +17,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const authController = require("./routes/auth.routes.js");
 const indexController = require("./routes/index.routes.js");
 const departmentRoutes=require('./routes/department.routes.js')
-
+const doctorRoutes=requrire('./routes/doctor.routes.js')
 
 // Middleware
 app.use(express.static('public')) // my app will serve all static files from public folder
