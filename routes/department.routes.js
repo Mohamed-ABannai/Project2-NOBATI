@@ -26,6 +26,30 @@ res.render('departments/allDepartments.ejs',{allDep:allDepartment})
 
 })
 
+router.get('/:id/edit',async(req,res)=>{
+
+const foundOne= await Department.findById(req.params.id,)
+
+res.render('departments/updateDepartment.ejs',{oneDep:foundOne})
+})
+
+router.delete('/:id',async(req,res)=>{
+
+    const foundOne=await Department.findByIdAndDelete(req.params.id)
+    res.redirect('/departments/')
+
+})
+
+router.put('/:id',async(req,res)=>{
+
+    const { name, description } = req.body
+    const foundOne=await Department.findByIdAndUpdate(req.params.id,{
+        name,
+        description
+    })
+
+    res.redirect('/departments/')
+})
 
 
 module.exports = router;
