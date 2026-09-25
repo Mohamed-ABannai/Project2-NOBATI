@@ -2,29 +2,21 @@ const mongoose = require('mongoose')
 
 const doctorSchema = new mongoose.Schema({
 
-  name: {
-    type: String,
+ user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
-    trim:true
+    unique: true
   },
 
   specialization: {
     type: String,
     required: true
   },
-  email: {
-  type: String,
-  required: true,
-  unique: true
-},
 
-password: {
-  type: String,
-  required: true
-},
   department: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Department',
+    ref: "Department",
     required: true
   },
 
