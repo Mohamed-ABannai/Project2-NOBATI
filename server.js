@@ -56,7 +56,7 @@ app.use(passUserToView)
 app.use('/auth',authController)
 app.use('/',indexController)
 app.use('/departments',departmentRoutes)
-
+app.use('/doctor',doctorRoutes)
 
 
 
