@@ -25,7 +25,7 @@ router.get('/new',async(req,res)=>{
 
 router.post('/new',upload.single("image"),async(req,res)=>{
 
-    const hashedPassword = bcrypt.hashSync("",10)
+    const hashedPassword = bcrypt.hashSync(req.body.password,10)
 
      const newUser = await User.create({
         username:req.body.username,
