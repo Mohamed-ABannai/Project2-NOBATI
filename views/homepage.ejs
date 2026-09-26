@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,96 +9,104 @@
     <link rel="stylesheet" href="/css/homepage.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
 
-<%- include('./partials/navbar') %>
+    <%- include('./partials/navbar') %>
 
-<main class="home-container">
+        <main class="home-container">
 
-<% if(user && user.role === "patient"){ %>
+            <% if(user && user.role==="patient" ){ %>
 
-    <section class="hero">
+                <section class="hero">
 
-        <div class="hero-content">
-            <p class="hero-label">WELCOME BACK</p>
-            <h1>Hello, <%= user.username || user.name %></h1>
+                    <div class="hero-content">
+                        <p class="hero-label">WELCOME BACK</p>
+                        <h1>Hello, <%= user.username || user.name %>
+                        </h1>
 
-            <p>Find the right doctor and manage your appointments easily with NOBATI.</p>
+                        <p>Find the right doctor and manage your appointments easily with NOBATI.</p>
 
-            <div class="hero-buttons">
-                <a href="/doctor/allDoctors" class="primary-btn">
-                    <i class="bi bi-search"></i> Find a Doctor
-                </a>
+                        <div class="hero-buttons">
+                            <a href="/doctor/allDoctors" class="primary-btn">
+                                <i class="bi bi-search"></i> Find a Doctor
+                            </a>
 
-                <a href="/appointments" class="secondary-btn">
-                    My Appointments
-                </a>
-            </div>
-        </div>
+                            <a href="/appointment" class="secondary-btn">
+                                My Appointments
+                            </a>
+                        </div>
+                    </div>
 
-        <div class="hero-logo">
-            <img src="../assests/NOBATI.png" alt="NOBATI">
-        </div>
+                    <div class="hero-logo">
+                        <img src="../assests/NOBATI.png" alt="NOBATI">
+                    </div>
 
-    </section>
+                </section>
 
-    <section class="quick-section">
+                <section class="quick-section">
 
-        <p class="section-label">QUICK ACCESS</p>
-        <h2>What would you like to do?</h2>
+                    <p class="section-label">QUICK ACCESS</p>
+                    <h2>What would you like to do?</h2>
 
-        <div class="quick-grid">
+                    <div class="quick-grid">
 
-            <a href="/doctor/allDoctors" class="quick-card">
-                <i class="bi bi-person-badge"></i>
-                <h3>Find a Doctor</h3>
-                <p>Browse our doctors and choose the right one for you.</p>
-            </a>
+                        <a href="/doctor/allDoctors" class="quick-card">
+                            <i class="bi bi-person-badge"></i>
+                            <h3>Find a Doctor</h3>
+                            <p>Browse our doctors and choose the right one for you.</p>
+                        </a>
 
-            <a href="/departments" class="quick-card">
-                <i class="bi bi-hospital"></i>
-                <h3>Departments</h3>
-                <p>Explore the available medical departments.</p>
-            </a>
+                        <a href="/departments" class="quick-card">
+                            <i class="bi bi-hospital"></i>
+                            <h3>Departments</h3>
+                            <p>Explore the available medical departments.</p>
+                        </a>
 
-            <a href="/appointments" class="quick-card">
-                <i class="bi bi-calendar-check"></i>
-                <h3>My Appointments</h3>
-                <p>View and manage your appointments.</p>
-            </a>
+                        <a href="/appointment" class="quick-card">
+                            <i class="bi bi-calendar-check"></i>
+                            <h3>My Appointments</h3>
+                            <p>View and manage your appointments.</p>
+                        </a>
 
-        </div>
+                    </div>
 
-    </section>
+                </section>
 
-<% } else { %>
+                <% } else { %>
 
-    <section class="hero">
+                    <section class="hero">
 
-        <div class="hero-content">
-            <p class="hero-label">YOUR HEALTH, YOUR TURN</p>
+                        <div class="hero-content">
+                            <p class="hero-label">YOUR HEALTH, YOUR TURN</p>
 
-            <h1>Healthcare made simple with <span>NOBATI</span></h1>
+                            <h1>Healthcare made simple with <span>NOBATI</span></h1>
 
-            <p>Find doctors, explore departments and manage your clinic appointments in one place.</p>
+                            <p>Find doctors, explore departments and manage your clinic appointments in one place.</p>
 
-            <% if(!user){ %>
-                <div class="hero-buttons">
-                    <a href="/auth/sign-up" class="primary-btn">Get Started</a>
-                    <a href="/auth/sign-in" class="secondary-btn">Login</a>
-                </div>
-            <% } %>
-        </div>
+                            <% if(!user){ %>
+                                <div class="hero-buttons">
+                                    <a href="/auth/sign-up" class="primary-btn">
+                                        Get Started
+                                    </a>
 
-        <div class="hero-logo">
-            <img src="../assests/NOBATI.png" alt="NOBATI">
-        </div>
+                                    <a href="/auth/sign-in" class="secondary-btn">
+                                        Login
+                                    </a>
+                                </div>
+                                <% } %>
+                        </div>
 
-    </section>
+                        <div class="hero-logo">
+                            <img src="../assests/NOBATI.png" alt="NOBATI">
+                        </div>
 
-<% } %>
+                    </section>
 
-</main>
+                    <% } %>
+
+        </main>
 
 </body>
+
 </html>
