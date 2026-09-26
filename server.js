@@ -20,6 +20,9 @@ const indexController = require("./routes/index.routes.js");
 const departmentRoutes=require('./routes/department.routes.js')
 const doctorRoutes=require('./routes/doctor.routes.js')
 const adminRoutes=require('./routes/admin.routes.js')
+const appointmentRoutes=require('./routes/appointment.routes.js')
+
+
 // Middleware
 app.use(express.static('public')) // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
@@ -59,7 +62,7 @@ app.use('/',indexController)
 app.use('/departments',departmentRoutes)
 app.use('/doctor',doctorRoutes)
 app.use('/admin',adminRoutes)
-
+app.use('/appointment',appointmentRoutes)
 
 // connect to database and listen on Port 3000
 async function startServer() {
