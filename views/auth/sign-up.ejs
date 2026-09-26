@@ -1,25 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <%- include('../partials/navbar') %>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="email">email:</label>
-      <input type="email" name="email" id="email" />
-      <label for="phone">phone:</label>
-      <input type="phone" name="phone" id="phone" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-      <button type="submit">Sign up</button>
-    </form>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | NOBATI</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<main class="auth-container">
+
+    <div class="auth-box">
+
+        <div class="auth-form-section">
+
+            <p class="auth-label">GET STARTED</p>
+            <h1>Create an Account</h1>
+            <p class="auth-description">Create your NOBATI account to manage your appointments.</p>
+
+            <form action="/auth/sign-up" method="post">
+
+                <div class="auth-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="auth-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="auth-group">
+                    <label for="phone">Phone</label>
+                    <input type="phone" name="phone" id="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="auth-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="auth-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+
+                <button class="auth-button" type="submit">Create Account</button>
+
+            </form>
+
+            <p class="auth-login">
+                Already have an account?
+                <a href="/auth/sign-in">Sign in</a>
+            </p>
+
+        </div>
+
+        <div class="auth-brand">
+            <img src="../assests/NOBATI.png" alt="NOBATI">
+            <h2>Your Health, Your Turn.</h2>
+            <p>Book and manage your clinic appointments easily.</p>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
 </html>
