@@ -58,4 +58,6 @@ router.get('/allDoctors',async(req,res)=>{
     res.render('doctors/allDoctors.ejs',{doctors:foundDoctors})
 })
 
+
+
 module.exports = router;
