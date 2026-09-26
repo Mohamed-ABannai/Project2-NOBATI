@@ -224,3 +224,193 @@
         display: inline-block;
     }
 }
+
+/* Create Appointment */
+
+.appointment-form-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.05);
+}
+
+.appointment-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.appointment-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.appointment-form .form-group:first-child,
+.appointment-form .form-group:nth-child(4) {
+    grid-column: 1 / -1;
+}
+
+.appointment-form label {
+    color: #082a5e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dbe7f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #082a5e;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+    border-color: #168fe3;
+    box-shadow: 0 0 0 3px #eef8ff;
+}
+
+.appointment-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    margin-top: 5px;
+    border-top: 1px solid #e3edf5;
+}
+
+.form-actions a {
+    padding: 11px 18px;
+    border: 1px solid #e3edf5;
+    border-radius: 8px;
+    color: #082a5e;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.form-actions a:hover {
+    color: #168fe3;
+    border-color: #168fe3;
+}
+
+.form-actions button {
+    background: #168fe3;
+    color: #ffffff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-actions button:hover {
+    background: #082a5e;
+}
+
+.form-actions button i {
+    margin-right: 5px;
+}
+
+
+/* No Doctors Available */
+
+.no-doctors {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.no-doctors > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #eef8ff;
+    color: #168fe3;
+    font-size: 30px;
+}
+
+.no-doctors h2 {
+    color: #082a5e;
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.no-doctors p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.no-doctors a {
+    display: inline-block;
+    padding: 11px 18px;
+    background: #168fe3;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.no-doctors a:hover {
+    background: #082a5e;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .appointment-form-container {
+        padding: 22px;
+    }
+
+    .appointment-form {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-form .form-group:first-child,
+    .appointment-form .form-group:nth-child(4) {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        grid-column: auto;
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .form-actions a,
+    .form-actions button {
+        width: 100%;
+        text-align: center;
+    }
+}

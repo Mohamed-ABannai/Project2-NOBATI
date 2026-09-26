@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/appointment.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar') %>
+
+        <main class="appointments-container">
+
+            <div class="appointments-header">
+                <div>
+                    <p>BOOK APPOINTMENT</p>
+                    <h1>New Appointment</h1>
+                    <span>Choose a General Medicine doctor and your preferred appointment time.</span>
+                </div>
+            </div>
+
+            <div class="appointment-form-container">
+
+                <% if(doctors.length===0){ %>
+
+                    <div class="no-doctors">
+                        <i class="bi bi-person-x"></i>
+                        <h2>No Doctors Available</h2>
+                        <p>There are currently no General Medicine doctors available.</p>
+                        <a href="/appointment">Back to My Appointments</a>
+                    </div>
+
+                    <% } else { %>
+
+                        <form action="/appointment/new" method="post" class="appointment-form">
+
+                            <div class="form-group">
+                                <label for="doctor">Doctor</label>
+
+                                <select name="doctor" id="doctor" required>
+                                    <option value="">Select Doctor</option>
+
+                                    <% for(let doctor of doctors){ %>
+                                        <option value="<%= doctor._id %>">
+                                            Dr. <%= doctor.user.username %>
+                                        </option>
+                                        <% } %>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="appointmentDate">Appointment Date</label>
+                                <input type="date" name="appointmentDate" id="appointmentDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="appointmentTime">Appointment Time</label>
+                                <input type="time" name="appointmentTime" id="appointmentTime" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reason">Reason</label>
+                                <textarea name="reason" id="reason"
+                                    placeholder="Tell us briefly why you need the appointment"></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <a href="/appointment">Cancel</a>
+
+                                <button type="submit">
+                                    <i class="bi bi-calendar-check"></i>
+                                    Book Appointment
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <% } %>
+
+            </div>
+
+        </main>
+
+</body>
+
+</html>
