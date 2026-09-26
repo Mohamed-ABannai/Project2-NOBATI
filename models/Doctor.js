@@ -32,6 +32,10 @@ const doctorSchema = new mongoose.Schema({
   image: {
     data: Buffer,
     contentType: String
+},
+isActive: {
+    type: Boolean,
+    default: true
 }
 
 }, { timestamps: true })

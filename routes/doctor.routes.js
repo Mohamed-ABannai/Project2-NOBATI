@@ -52,10 +52,92 @@ router.post('/new',upload.single("image"),async(req,res)=>{
 
 router.get('/allDoctors',async(req,res)=>{
 
-    const foundDoctors = await Doctor.find().populate('user').populate('department')
+    const foundDoctors = await Doctor.find({isActive:true}).populate('user').populate('department')
 
 
     res.render('doctors/allDoctors.ejs',{doctors:foundDoctors})
+})
+
+router.get('/:id/edit',async(req,res)=>{
+
+    const foundone = await Doctor.findById(req.params.id).populate('user').populate('department')
+
+    const departments = await Department.find()
+
+    res.render('doctors/updateDoctor.ejs',{
+        doctor:foundone,
+        departments:departments
+    })
+})
+
+router.put('/:id',upload.single('image'),async(req,res)=>{
+
+    const foundDoctor = await Doctor.findById(req.params.id)
+
+    if(!foundDoctor){
+        return res.send('Doctor not found')
+    }
+
+    const {
+        username,
+        email,
+        phone,
+        specialization,
+        department,
+        consultationFee,
+        bio
+    } = req.body
+
+    const userUpdate = {
+        username,
+        email,
+        phone
+    }
+
+    const doctorUpdate = {
+        specialization,
+        department,
+        consultationFee,
+        bio
+    }
+
+    if(req.file){
+        doctorUpdate.image = {
+            data:req.file.buffer,
+            contentType:req.file.mimetype
+        }
+    }
+
+    await User.findByIdAndUpdate(foundDoctor.user,userUpdate)
+
+    await Doctor.findByIdAndUpdate(req.params.id,doctorUpdate)
+
+    res.redirect('/doctor/allDoctors')
+})
+
+
+
+router.delete('/:id',async(req,res)=>{
+
+    const foundDoctor = await Doctor.findById(req.params.id)
+
+    if(!foundDoctor){
+        return res.send('Doctor not found')
+    }
+
+    const doctorUpdate = {
+        isActive:false
+    }
+
+    const userUpdate = {
+        isActive:false
+    }
+
+    await Doctor.findByIdAndUpdate(req.params.id,doctorUpdate)
+
+    await User.findByIdAndUpdate(foundDoctor.user,userUpdate)
+
+    res.redirect('/doctor/allDoctors')
 })
 
 

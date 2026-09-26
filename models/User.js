@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
   phone: {
       type: String,
    },
-   
+   isActive: {
+    type: Boolean,
+    default: true
+}
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema);

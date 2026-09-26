@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Doctor | NOBATI</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/doctors.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<main class="doctor-form-container">
+
+<div class="doctor-form-header">
+    <p>DOCTOR MANAGEMENT</p>
+    <h1>Update Doctor</h1>
+    <span>Update doctor account and professional information.</span>
+</div>
+
+<form class="doctor-form" action="/doctor/<%= doctor._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+
+<div class="form-group full-width doctor-image-section">
+
+    <% if(doctor.image && doctor.image.data){ %>
+        <img class="edit-doctor-image"
+        src="data:<%= doctor.image.contentType %>;base64,<%= doctor.image.data.toString('base64') %>"
+        alt="<%= doctor.user.username %>">
+    <% } %>
+
+    <label for="image">Change Doctor Image</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+</div>
+
+<div class="form-group">
+    <label for="username">Doctor Name</label>
+    <input type="text" id="username" name="username" value="<%= doctor.user.username %>" required>
+</div>
+
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" value="<%= doctor.user.email %>" required>
+</div>
+
+<div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" name="phone" value="<%= doctor.user.phone || '' %>">
+</div>
+
+<div class="form-group">
+    <label for="specialization">Specialization</label>
+    <input type="text" id="specialization" name="specialization" value="<%= doctor.specialization %>" required>
+</div>
+
+<div class="form-group">
+    <label for="department">Department</label>
+    <select id="department" name="department" required>
+        <% for(let dep of departments){ %>
+            <option value="<%= dep._id %>" <%= dep._id.toString() === doctor.department._id.toString() ? 'selected' : '' %>>
+                <%= dep.name %>
+            </option>
+        <% } %>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="consultationFee">Consultation Fee (BHD)</label>
+    <input type="number" id="consultationFee" name="consultationFee" value="<%= doctor.consultationFee %>" required>
+</div>
+
+<div class="form-group full-width">
+    <label for="bio">Bio</label>
+    <textarea id="bio" name="bio"><%= doctor.bio || '' %></textarea>
+</div>
+
+<div class="form-actions full-width">
+    <a href="/doctor/allDoctors">Cancel</a>
+    <button type="submit">Update Doctor</button>
+</div>
+
+</form>
+
+</main>
+
+</body>
+</html>
