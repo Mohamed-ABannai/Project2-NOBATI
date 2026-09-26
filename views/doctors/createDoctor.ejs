@@ -6,20 +6,48 @@
     <title>Add New Doctor</title>
 </head>
 <body>
-    
+
+<%- include('../partials/navbar') %>
+
 <h1>Add Doctor</h1>
 
+<form action="/doctor/new" method="post" enctype="multipart/form-data">
 
-<form action="" method="post">
+<label for="username">Doctor Name:</label>
+<input type="text" id="username" name="username" required>
 
-    
-    
+<label for="phone">Phone:</label>
+<input type="text" id="phone" name="phone">
 
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
 
+<label for="password">Temporary Password:</label>
+<input type="password" id="password" name="password" required>
+
+<label for="specialization">Specialization:</label>
+<input type="text" id="specialization" name="specialization" required>
+
+<label for="department">Department:</label>
+<select id="department" name="department" required>
+    <option value="">Select Department</option>
+    <% for(let dep of departments){ %>
+        <option value="<%= dep._id %>"><%= dep.name %></option>
+    <% } %>
+</select>
+
+<label for="consultationFee">Consultation Fee:</label>
+<input type="number" id="consultationFee" name="consultationFee" required>
+
+<label for="bio">Bio:</label>
+<textarea id="bio" name="bio"></textarea>
+
+<label for="image">Doctor Image:</label>
+<input type="file" id="image" name="image" accept="image/*">
 
 <button type="submit">Add Doctor</button>
-</form>
 
+</form>
 
 </body>
 </html>

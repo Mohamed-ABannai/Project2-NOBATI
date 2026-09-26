@@ -6,7 +6,6 @@
 }
 
 
-/* Welcome */
 
 .admin-header {
     background: #eef8ff;
@@ -33,7 +32,6 @@
 }
 
 
-/* Cards */
 
 .admin-grid {
     display: grid;
@@ -62,7 +60,6 @@
 }
 
 
-/* Icons */
 
 .admin-icon {
     width: 55px;
@@ -81,7 +78,6 @@
 }
 
 
-/* Card Text */
 
 .admin-card h2 {
     color: #082a5e;
@@ -95,7 +91,6 @@
 }
 
 
-/* Mobile */
 
 @media (max-width: 700px) {
     .admin-grid {
