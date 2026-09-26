@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | NOBATI</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar') %>
+
+
+    <main class="admin-container">
+
+        <!-- Welcome Section -->
+        <section class="admin-header">
+
+            <div>
+                <p class="admin-label">ADMIN DASHBOARD</p>
+
+               <h1>Welcome to <span class="nobati-logo">N<span class="clock-o"><i class="bi bi-clock"></i></span>BATI</span></h1>
+
+                <p>
+                    Manage doctors, departments, appointments,
+                    and users from one place.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Management Cards -->
+        <section class="admin-grid">
+
+            <a href="/departments/" class="admin-card">
+
+                <div class="admin-icon">
+                    <i class="bi bi-hospital"></i>
+                </div>
+
+                <div>
+                    <h2>Departments</h2>
+                    <p>Manage hospital departments.</p>
+                </div>
+
+            </a>
+
+
+            <a href="" class="admin-card">
+
+                <div class="admin-icon">
+                    <i class="bi bi-person-badge"></i>
+                </div>
+
+                <div>
+                    <h2>Doctors</h2>
+                    <p>Add and manage doctors.</p>
+                </div>
+
+            </a>
+
+
+            <a href="" class="admin-card">
+
+                <div class="admin-icon">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+
+                <div>
+                    <h2>Appointments</h2>
+                    <p>View and manage appointments.</p>
+                </div>
+
+            </a>
+
+
+            <a href="" class="admin-card">
+
+                <div class="admin-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+
+                <div>
+                    <h2>Users</h2>
+                    <p>View registered patients.</p>
+                </div>
+
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

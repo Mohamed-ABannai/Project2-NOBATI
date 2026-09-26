@@ -1,3 +1,12 @@
+const isSignedIn = (req, res, next) => {
+  if (req.session.user) {
+    return next();
+  }
+
+  res.redirect("/auth/sign-in");
+};
+
+
 const isPatient = (req, res, next) => {
   if (req.session.user && req.session.user.role === "patient") {
     return next();
@@ -28,5 +37,6 @@ const isAdmin = (req, res, next) => {
 module.exports = {
   isPatient,
   isDoctor,
-  isAdmin
+  isAdmin,
+  isSignedIn
 };
