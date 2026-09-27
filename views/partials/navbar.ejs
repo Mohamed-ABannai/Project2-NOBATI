@@ -1,8 +1,22 @@
 <nav>
     
+    <% if(!user || user && user.role=='patient'){ %>
     <a href="/">Homepage</a>
+    <% } %>
+
+    <% if(user && user.role=='admin') {%>
+    <a href="/admin/">Homepage</a>
+    <% } %>
+
+    <% if(user && user.role=='doctor') {%>
+    <a href="/doctor/">Homepage</a>
+    <% } %>
+
     <% if (user){ %>
+    <a href="/doctor/allDoctors">Doctors</a>
+    <a href="/departments/">Departments</a>
     <a href="/auth/sign-out">Logout</a>
+    
 
     <% } else{ %>
     <a href="/auth/sign-up">Sign up</a>
