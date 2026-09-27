@@ -48,4 +48,17 @@ router.post('/new',isPatient,async(req,res)=>{
     res.redirect('/appointment')
 })
 
+
+router.put('/:id/cancel',isPatient,async(req,res)=>{
+
+    
+
+   const foundAppointment =await Appointment.findByIdAndUpdate(
+        req.params.id,{
+        status:'cancelled'}
+    )
+
+    res.redirect('/appointment')
+})
+
 module.exports = router;
