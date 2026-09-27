@@ -61,4 +61,21 @@ router.put('/:id/cancel',isPatient,async(req,res)=>{
     res.redirect('/appointment')
 })
 
+
+router.get('/:id/edit',isPatient,async(req,res)=>{
+
+    const appointment = await Appointment.findById(req.params.id)
+
+    const department = await Department.findOne({name:'General Medicine'})
+
+    const doctors = await Doctor.find({department:department._id,
+        isActive:true
+    }).populate('user')
+
+    res.render('appointments/updateAppointment.ejs',{appointment:appointment,
+        doctors:doctors
+    })
+})
+
+
 module.exports = router;

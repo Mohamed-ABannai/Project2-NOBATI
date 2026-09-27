@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Appointment | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/appointment.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <%- include('../partials/navbar') %>
+
+        <main class="appointments-container">
+
+            <div class="appointments-header">
+                <div>
+                    <p>EDIT APPOINTMENT</p>
+                    <h1>Update Appointment</h1>
+                    <span>Change your doctor, date, time or reason.</span>
+                </div>
+            </div>
+
+            <div class="appointment-form-container">
+
+                <form action="/appointment/<%= appointment._id %>?_method=PUT" method="post" class="appointment-form">
+
+                    <div class="form-group">
+
+                        <label for="doctor">Doctor</label>
+
+                        <select name="doctor" id="doctor" required>
+
+                            <% for(let doctor of doctors){ %>
+
+                                <% if(appointment.doctor.toString()===doctor._id.toString()){ %>
+
+                                    <option value="<%= doctor._id %>" selected>
+                                        Dr. <%= doctor.user.username %>
+                                    </option>
+
+                                    <% } else { %>
+
+                                        <option value="<%= doctor._id %>">
+                                            Dr. <%= doctor.user.username %>
+                                        </option>
+
+                                        <% } %>
+
+                                            <% } %>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="appointmentDate">Appointment Date</label>
+
+                        <input type="date" name="appointmentDate" id="appointmentDate"
+                            value="<%= appointment.appointmentDate.toISOString().split('T')[0] %>" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="appointmentTime">Appointment Time</label>
+
+                        <input type="time" name="appointmentTime" id="appointmentTime"
+                            value="<%= appointment.appointmentTime %>" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="reason">Reason</label>
+
+                        <textarea name="reason" id="reason"><%= appointment.reason %></textarea>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <a href="/appointment">Cancel</a>
+
+                        <button type="submit">
+                            <i class="bi bi-check-lg"></i>
+                            Update Appointment
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </main>
+
+        <script>
+            const today = new Date().toISOString().split('T')[0]
+            document.getElementById('appointmentDate').min = today
+        </script>
+
+</body>
+
+</html>
