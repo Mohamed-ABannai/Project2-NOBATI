@@ -15,78 +15,85 @@
 
     <%- include('../partials/navbar') %>
 
-        <main class="appointments-container">
+    <main class="appointments-container">
 
-            <div class="appointments-header">
-                <div>
-                    <p>BOOK APPOINTMENT</p>
-                    <h1>New Appointment</h1>
-                    <span>Choose a General Medicine doctor and your preferred appointment time.</span>
-                </div>
+        <div class="appointments-header">
+            <div>
+                <p>BOOK APPOINTMENT</p>
+                <h1>New Appointment</h1>
+                <span>Choose a General Medicine doctor and your preferred appointment time.</span>
             </div>
+        </div>
 
-            <div class="appointment-form-container">
+        <div class="appointment-form-container">
 
-                <% if(doctors.length===0){ %>
+            <% if(doctors.length === 0){ %>
 
-                    <div class="no-doctors">
-                        <i class="bi bi-person-x"></i>
-                        <h2>No Doctors Available</h2>
-                        <p>There are currently no General Medicine doctors available.</p>
-                        <a href="/appointment">Back to My Appointments</a>
+                <div class="no-doctors">
+                    <i class="bi bi-person-x"></i>
+                    <h2>No Doctors Available</h2>
+                    <p>There are currently no General Medicine doctors available.</p>
+                    <a href="/appointment">Back to My Appointments</a>
+                </div>
+
+            <% } else { %>
+
+                <form action="/appointment/new" method="post" class="appointment-form">
+
+                    <div class="form-group">
+                        <label for="doctor">Doctor</label>
+
+                        <select name="doctor" id="doctor" required>
+                            <option value="">Select Doctor</option>
+
+                            <% for(let doctor of doctors){ %>
+                                <option value="<%= doctor._id %>">
+                                    Dr. <%= doctor.user.username %>
+                                </option>
+                            <% } %>
+
+                        </select>
                     </div>
 
-                    <% } else { %>
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date</label>
+                        <input type="date" name="appointmentDate" id="appointmentDate" required>
+                    </div>
 
-                        <form action="/appointment/new" method="post" class="appointment-form">
+                    <div class="form-group">
+                        <label for="appointmentTime">Appointment Time</label>
+                        <input type="time" name="appointmentTime" id="appointmentTime" required>
+                    </div>
 
-                            <div class="form-group">
-                                <label for="doctor">Doctor</label>
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <textarea name="reason" id="reason"
+                            placeholder="Tell us briefly why you need the appointment"></textarea>
+                    </div>
 
-                                <select name="doctor" id="doctor" required>
-                                    <option value="">Select Doctor</option>
+                    <div class="form-actions">
 
-                                    <% for(let doctor of doctors){ %>
-                                        <option value="<%= doctor._id %>">
-                                            Dr. <%= doctor.user.username %>
-                                        </option>
-                                        <% } %>
+                        <a href="/appointment">Cancel</a>
 
-                                </select>
-                            </div>
+                        <button type="submit">
+                            <i class="bi bi-calendar-check"></i>
+                            Book Appointment
+                        </button>
 
-                            <div class="form-group">
-                                <label for="appointmentDate">Appointment Date</label>
-                                <input type="date" name="appointmentDate" id="appointmentDate" required>
-                            </div>
+                    </div>
 
-                            <div class="form-group">
-                                <label for="appointmentTime">Appointment Time</label>
-                                <input type="time" name="appointmentTime" id="appointmentTime" required>
-                            </div>
+                </form>
 
-                            <div class="form-group">
-                                <label for="reason">Reason</label>
-                                <textarea name="reason" id="reason"
-                                    placeholder="Tell us briefly why you need the appointment"></textarea>
-                            </div>
+            <% } %>
 
-                            <div class="form-actions">
-                                <a href="/appointment">Cancel</a>
+        </div>
 
-                                <button type="submit">
-                                    <i class="bi bi-calendar-check"></i>
-                                    Book Appointment
-                                </button>
-                            </div>
+    </main>
 
-                        </form>
-
-                        <% } %>
-
-            </div>
-
-        </main>
+   <script>
+    const today = new Date().toISOString().split('T')[0]
+    document.getElementById('appointmentDate').min = today
+</script>
 
 </body>
 
