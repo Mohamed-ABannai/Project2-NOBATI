@@ -287,3 +287,122 @@
         grid-column: 1;
     }
 }
+
+/* Doctor Homepage */
+
+.doctor-home {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.doctor-welcome {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 18px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.doctor-welcome p {
+    color: #168fe3;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.doctor-welcome h1 {
+    color: #082a5e;
+    font-size: 38px;
+    margin: 8px 0;
+}
+
+.doctor-welcome span {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.doctor-welcome img {
+    width: 180px;
+    max-width: 35%;
+}
+
+.doctor-quick-access {
+    margin-top: 40px;
+}
+
+.doctor-quick-access h2 {
+    color: #082a5e;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.doctor-home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.doctor-home-card {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: 0.2s;
+}
+
+.doctor-home-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.08);
+}
+
+.doctor-home-card > i {
+    width: 48px;
+    height: 48px;
+    background: #eef8ff;
+    color: #168fe3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.doctor-home-card h3 {
+    color: #082a5e;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.doctor-home-card p {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+
+    .doctor-home-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-welcome {
+        padding: 30px;
+    }
+
+    .doctor-welcome h1 {
+        font-size: 30px;
+    }
+
+    .doctor-welcome img {
+        display: none;
+    }
+}

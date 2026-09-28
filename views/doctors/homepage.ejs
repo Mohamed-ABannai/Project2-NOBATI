@@ -1,11 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Doctor Homepage | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/doctors.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
-    <h1>Doctor Homepage</h1>
+
+<%- include('../partials/navbar') %>
+
+<main class="doctor-home">
+
+    <section class="doctor-welcome">
+
+        <div>
+            <p>DOCTOR PORTAL</p>
+
+            <h1>Welcome to NOBATI</h1>
+
+            <span>
+                Manage your appointments and help your patients get the care they need.
+            </span>
+        </div>
+
+        <img src="../assests/NOBATI.png" alt="NOBATI">
+
+    </section>
+
+
+    <section class="doctor-quick-access">
+
+        <h2>Quick Access</h2>
+
+        <div class="doctor-home-grid">
+
+            <a href="/doctor/appointments" class="doctor-home-card">
+
+                <i class="bi bi-calendar2-check"></i>
+
+                <div>
+                    <h3>My Appointments</h3>
+                    <p>View and manage your patient appointments.</p>
+                </div>
+
+            </a>
+
+
+            <a href="/doctor/profile" class="doctor-home-card">
+
+                <i class="bi bi-person-badge"></i>
+
+                <div>
+                    <h3>My Profile</h3>
+                    <p>View your doctor information and profile.</p>
+                </div>
+
+            </a>
+
+
+            <a href="/departments" class="doctor-home-card">
+
+                <i class="bi bi-building"></i>
+
+                <div>
+                    <h3>Departments</h3>
+                    <p>View the available clinic departments.</p>
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
 </body>
 </html>
