@@ -1,53 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Doctor</title>
+
+    <title>Add Doctor | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/doctors.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
 
 <%- include('../partials/navbar') %>
 
-<h1>Add Doctor</h1>
+<main class="doctor-form-page">
 
-<form action="/doctor/new" method="post" enctype="multipart/form-data">
+    <div class="doctor-form-header">
+        <p>DOCTOR MANAGEMENT</p>
+        <h1>Add New Doctor</h1>
+        <span>Create a doctor account and add their professional information.</span>
+    </div>
 
-<label for="username">Doctor Name:</label>
-<input type="text" id="username" name="username" required>
+    <div class="doctor-form-container">
 
-<label for="phone">Phone:</label>
-<input type="text" id="phone" name="phone">
+        <form action="/doctor/new" method="post" enctype="multipart/form-data" class="doctor-form">
 
-<label for="email">Email:</label>
-<input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="username">Doctor Name</label>
+                <input type="text" id="username" name="username" placeholder="Enter doctor name" required>
+            </div>
 
-<label for="password">Temporary Password:</label>
-<input type="password" id="password" name="password" required>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter phone number">
+            </div>
 
-<label for="specialization">Specialization:</label>
-<input type="text" id="specialization" name="specialization" required>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter email address" required>
+            </div>
 
-<label for="department">Department:</label>
-<select id="department" name="department" required>
-    <option value="">Select Department</option>
-    <% for(let dep of departments){ %>
-        <option value="<%= dep._id %>"><%= dep.name %></option>
-    <% } %>
-</select>
+            <div class="form-group">
+                <label for="password">Temporary Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter temporary password" required>
+            </div>
 
-<label for="consultationFee">Consultation Fee:</label>
-<input type="number" id="consultationFee" name="consultationFee" required>
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <input type="text" id="specialization" name="specialization" placeholder="Enter specialization" required>
+            </div>
 
-<label for="bio">Bio:</label>
-<textarea id="bio" name="bio"></textarea>
+            <div class="form-group">
+                <label for="department">Department</label>
 
-<label for="image">Doctor Image:</label>
-<input type="file" id="image" name="image" accept="image/*">
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
 
-<button type="submit">Add Doctor</button>
+                    <% for(let dep of departments){ %>
+                        <option value="<%= dep._id %>"><%= dep.name %></option>
+                    <% } %>
 
-</form>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="consultationFee">Consultation Fee</label>
+                <input type="number" id="consultationFee" name="consultationFee" placeholder="Enter consultation fee" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Doctor Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" placeholder="Write a short bio about the doctor"></textarea>
+            </div>
+
+            <div class="doctor-form-actions">
+
+                <a href="/doctor/allDoctors">
+                    Cancel
+                </a>
+
+                <button type="submit">
+                    <i class="bi bi-person-plus"></i>
+                    Add Doctor
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
 
 </body>
 </html>
