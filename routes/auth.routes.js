@@ -3,95 +3,84 @@ const router = express.Router();
 const User = require("../models/User.js");
 const bcrypt = require("bcrypt");
 
-
-// Sign up routes
-router.get("/sign-up", (req, res) => {
-  res.render("auth/sign-up.ejs");
+router.get("/sign-up",(req,res)=>{
+    res.render("auth/sign-up.ejs");
 });
 
-router.post("/sign-up", async (req, res) => {
-  const userInDatabase = await User.findOne({ username: req.body.username });
-  if (userInDatabase) {
-    return res.send("Username already taken.");
-  }
+router.post("/sign-up",async(req,res)=>{
+    try{
+        const userInDatabase=await User.findOne({username:req.body.username});
 
-  if (req.body.password !== req.body.confirmPassword) {
-    return res.send("Password and Confirm Password must match");
-  }
+        if(userInDatabase){
+            return res.send("Username already taken.");
+        }
 
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-  req.body.password = hashedPassword;
+        if(req.body.password !== req.body.confirmPassword){
+            return res.send("Password and Confirm Password must match");
+        }
 
-  // validation logic
+        const hashedPassword=bcrypt.hashSync(req.body.password,10);
+        req.body.password=hashedPassword;
 
-  const user = await User.create(req.body);
-  res.redirect("/auth/sign-in");
+        const user=await User.create(req.body);
+        console.log(user)
+
+        res.redirect("/auth/sign-in");
+    }catch(err){
+        console.log(err)
+    }
 });
 
-
-
-// Sign in routes
-router.get("/sign-in", (req, res) => {
-  res.render("auth/sign-in.ejs");
+router.get("/sign-in",(req,res)=>{
+    res.render("auth/sign-in.ejs");
 });
 
+router.post("/sign-in",async(req,res)=>{
+    try{
+        const userInDatabase=await User.findOne({
+            username:req.body.username
+        });
 
+        if(!userInDatabase){
+            return res.send("Login failed. Please try again.");
+        }
 
-router.post("/sign-in", async (req, res) => {
+        if(!userInDatabase.isActive){
+            return res.send("Your account is inactive.");
+        }
 
-  // First, get the user from the database
-  const userInDatabase = await User.findOne({
-    username: req.body.username
-  });
+        const validPassword=bcrypt.compareSync(
+            req.body.password,
+            userInDatabase.password
+        );
 
-  if (!userInDatabase) {
-    return res.send("Login failed. Please try again.");
-  }
+        if(!validPassword){
+            return res.send("Login failed. Please try again.");
+        }
 
-  // Check if the user account is active
-  if (!userInDatabase.isActive) {
-    return res.send("Your account is inactive.");
-  }
+        req.session.user={
+            username:userInDatabase.username,
+            _id:userInDatabase._id,
+            role:userInDatabase.role
+        };
 
-  // There is a user! Time to test their password with bcrypt
-  const validPassword = bcrypt.compareSync(
-    req.body.password,
-    userInDatabase.password
-  );
+        if(userInDatabase.role === "admin"){
+            return res.redirect("/admin/");
+        }
 
-  if (!validPassword) {
-    return res.send("Login failed. Please try again.");
-  }
+        if(userInDatabase.role === "doctor"){
+            return res.redirect("/doctor/");
+        }
 
-  // There is a user AND they had the correct password. Time to make a session!
-  // Avoid storing the password, even in hashed format, in the session
-  // Save the user information we need inside the session
-  req.session.user = {
-    username: userInDatabase.username,
-    _id: userInDatabase._id,
-    role: userInDatabase.role
-  };
-
-  // Redirect the user depending on their role
-  if (userInDatabase.role === "admin") {
-    return res.redirect("/admin/");
-  }
-
-  if (userInDatabase.role === "doctor") {
-    return res.redirect("/doctor/");
-  }
-
-  // Patient goes to the main homepage
-  res.redirect("/");
+        res.redirect("/");
+    }catch(err){
+        console.log(err)
+    }
 });
 
-router.get("/sign-out", (req, res) => {
-  req.session.destroy();
-  res.redirect("/");
+router.get("/sign-out",(req,res)=>{
+    req.session.destroy();
+    res.redirect("/");
 });
 
-
-
-
-
-module.exports = router;
+module.exports=router;
