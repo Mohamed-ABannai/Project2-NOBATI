@@ -66,17 +66,6 @@ nav>a[href="/auth/sign-out"]:hover{
     background:#eef8ff;
 }
 
-nav>a[href="/auth/sign-in"]{
-    color:white;
-    background:#168fe3;
-    padding:10px 20px;
-}
-
-nav>a[href="/auth/sign-in"]:hover{
-    color:white;
-    background:#087bd0;
-}
-
 .logo {
     color: #082a5e;
     font-size: 28px;

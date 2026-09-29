@@ -58,7 +58,9 @@ app.use('/departments',departmentRoutes)
 app.use('/doctor',doctorRoutes)
 app.use('/admin',adminRoutes)
 app.use('/appointment',appointmentRoutes)
-
+app.use((req,res)=>{
+    res.status(404).render('404.ejs')
+})
 
 async function startServer() {
     const PORT = process.env.PORT || 3000;
