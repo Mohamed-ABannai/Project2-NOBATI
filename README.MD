@@ -16,8 +16,6 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing cli
 
 ## Patient role Screen Shot
 
-
-
 ## Technologies Used
 
 - Node.js

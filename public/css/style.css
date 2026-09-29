@@ -10,8 +10,6 @@ body {
     color: #082a5e;
 }
 
-
-
 nav{
     height:72px;
     display:flex;
@@ -34,17 +32,20 @@ nav{
     padding:0;
 }
 
-.nav-logo:hover{
-    background:transparent;
-}
-
 .nav-logo img{
     width:115px;
     height:auto;
     display:block;
 }
 
-nav>a:not(.nav-logo){
+.nav-links{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.nav-links a{
     color:#082a5e;
     text-decoration:none;
     font-size:15px;
@@ -54,19 +55,28 @@ nav>a:not(.nav-logo){
     transition:.2s;
 }
 
-nav>a:not(.nav-logo):hover{
+.nav-links a:hover{
     color:#168fe3;
     background:#eef8ff;
 }
 
-nav>a[href="/auth/sign-out"]{
+.nav-logout{
     margin-left:auto;
-    color:#64748b;
+    color:#64748b !important;
 }
 
-nav>a[href="/auth/sign-out"]:hover{
-    color:#168fe3;
+.nav-logout:hover{
+    color:#168fe3 !important;
     background:#eef8ff;
+}
+
+.nav-toggle{
+    display:none;
+    border:0;
+    background:transparent;
+    color:#082a5e;
+    font-size:28px;
+    cursor:pointer;
 }
 
 .logo {
@@ -79,4 +89,51 @@ nav>a[href="/auth/sign-out"]:hover{
 
 .logo-o ,.clock-o {
     color: #168fe3;
+}
+
+@media(max-width:768px){
+    nav{
+        padding:0 20px;
+    }
+
+    .nav-logo{
+        margin-right:0;
+    }
+
+    .nav-logo img{
+        width:105px;
+    }
+
+    .nav-toggle{
+        display:block;
+        margin-left:auto;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        width:100%;
+        background:#fff;
+        padding:15px 20px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        border-bottom:1px solid #e3edf5;
+        box-shadow:0 5px 10px rgba(8,42,94,.06);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        width:100%;
+        padding:12px 14px;
+    }
+
+    .nav-logout{
+        margin-left:0;
+    }
 }
