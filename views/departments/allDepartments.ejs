@@ -15,59 +15,72 @@
 
     <%- include('../partials/navbar') %>
 
-        <main class="departments-container">
+    <main class="departments-container">
 
-            <div class="departments-header">
+        <div class="departments-header">
+
+            <div>
                 <p>MEDICAL SERVICES</p>
                 <h1>NOBATI Departments</h1>
                 <span>Explore our medical departments and find the care you need.</span>
             </div>
 
-            <div class="departments-grid">
+            <% if(user && user.role === "admin"){ %>
 
-                <% for(let dep of allDep){ %>
+                <a href="/departments/create" class="add-department-btn">
+                    <i class="bi bi-plus-lg"></i>
+                    Add Department
+                </a>
 
-                    <div class="department-card">
+            <% } %>
 
-                        <div class="department-icon">
-                            <i class="bi bi-hospital"></i>
-                        </div>
+        </div>
 
-                        <h2>
-                            <%= dep.name %>
-                        </h2>
+        <div class="departments-grid">
 
-                        <p>
-                            <%= dep.description %>
-                        </p>
+            <% for(let dep of allDep){ %>
 
-                        <% if(user && user.role==="admin" ){ %>
+                <div class="department-card">
 
-                            <div class="department-actions">
-
-                                <a href="/departments/<%= dep._id %>/edit">
-                                    <i class="bi bi-pencil"></i>
-                                    Edit
-                                </a>
-
-                                <form action="/departments/<%= dep._id %>?_method=DELETE" method="post">
-                                    <button type="submit">
-                                        <i class="bi bi-trash"></i>
-                                        Delete
-                                    </button>
-                                </form>
-
-                            </div>
-
-                            <% } %>
-
+                    <div class="department-icon">
+                        <i class="bi bi-hospital"></i>
                     </div>
+
+                    <h2>
+                        <%= dep.name %>
+                    </h2>
+
+                    <p>
+                        <%= dep.description %>
+                    </p>
+
+                    <% if(user && user.role === "admin"){ %>
+
+                        <div class="department-actions">
+
+                            <a href="/departments/<%= dep._id %>/edit">
+                                <i class="bi bi-pencil"></i>
+                                Edit
+                            </a>
+
+                            <form action="/departments/<%= dep._id %>?_method=DELETE" method="post">
+                                <button type="submit">
+                                    <i class="bi bi-trash"></i>
+                                    Delete
+                                </button>
+                            </form>
+
+                        </div>
 
                     <% } %>
 
-            </div>
+                </div>
 
-        </main>
+            <% } %>
+
+        </div>
+
+    </main>
 
 </body>
 

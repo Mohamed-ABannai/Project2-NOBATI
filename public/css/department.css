@@ -238,3 +238,27 @@
 .department-form-actions button:hover{
     opacity:.9;
 }
+
+.departments-header{
+    position:relative;
+}
+
+.add-department-btn{
+    position:absolute;
+    right:0;
+    top:15px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    background:#168fe3;
+    color:white;
+    padding:11px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.add-department-btn:hover{
+    opacity:.9;
+}
