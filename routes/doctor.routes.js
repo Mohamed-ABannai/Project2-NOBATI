@@ -3,13 +3,14 @@ const User = require("../models/User");
 const Department = require("../models/Department");
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const { isDoctor } = require("../middleware/is-signed-in");
 
 const router = require("express").Router()
 
 const storage = multer.memoryStorage()
 const upload = multer({storage:storage})
 
-router.get('/',async(req,res)=>{
+router.get('/',isDoctor,async(req,res)=>{
 
     res.render('doctors/homepage.ejs')
 })
@@ -47,7 +48,7 @@ router.post('/new',upload.single("image"),async(req,res)=>{
         }
     })
 
-    res.redirect('/doctor/')
+    res.redirect('/doctor/allDoctors')
 })
 
 router.get('/allDoctors',async(req,res)=>{
@@ -113,6 +114,60 @@ router.put('/:id',upload.single('image'),async(req,res)=>{
     await Doctor.findByIdAndUpdate(req.params.id,doctorUpdate)
 
     res.redirect('/doctor/allDoctors')
+})
+
+router.get('/edit',isDoctor,async(req,res)=>{
+
+    const doctor = await Doctor.findOne({
+        user:req.session.user._id
+    })
+    .populate('user')
+    .populate('department')
+
+    res.render('doctors/updateProfile.ejs',{
+        doctor:doctor
+    })
+})
+
+router.put('/profile',isDoctor,upload.single('image'),async(req,res)=>{
+
+    const doctor = await Doctor.findOne({
+        user:req.session.user._id
+    })
+
+    const userUpdate = {
+        username:req.body.username,
+        email:req.body.email,
+        phone:req.body.phone
+    }
+
+    const doctorUpdate = {
+        specialization:req.body.specialization,
+        consultationFee:req.body.consultationFee,
+        bio:req.body.bio
+    }
+
+    if(req.file){
+        doctorUpdate.image = {
+            data:req.file.buffer,
+            contentType:req.file.mimetype
+        }
+    }
+
+    await User.findByIdAndUpdate(
+        req.session.user._id,
+        userUpdate
+    )
+
+    await Doctor.findByIdAndUpdate(
+        doctor._id,
+        doctorUpdate
+    )
+
+    // Update username stored in the session
+    req.session.user.username = req.body.username
+
+    res.redirect('/doctor/profile')
 })
 
 

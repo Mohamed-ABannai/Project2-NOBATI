@@ -577,3 +577,177 @@
         text-align: center;
     }
 }
+
+.doctors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-doctor-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #168fe3;
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.add-doctor-btn:hover {
+    opacity: 0.9;
+}
+
+/* =========================
+   Doctor Update Profile
+========================= */
+
+.update-profile-container {
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.update-profile-header {
+    margin-bottom: 30px;
+}
+
+.update-profile-header > p {
+    color: #168fe3;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.update-profile-header h1 {
+    color: #082a5e;
+    font-size: 36px;
+    margin: 0 0 8px;
+}
+
+.update-profile-header span {
+    color: #64748b;
+    font-size: 15px;
+}
+
+
+/* Form */
+
+.update-profile-form {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.06);
+}
+
+
+
+/* Form Fields */
+
+.update-profile-form .form-group {
+    margin-bottom: 20px;
+}
+
+.update-profile-form label {
+    display: block;
+    color: #082a5e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.update-profile-form input,
+.update-profile-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dbe7f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #082a5e;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.2s;
+}
+
+.update-profile-form input:focus,
+.update-profile-form textarea:focus {
+    border-color: #168fe3;
+    box-shadow: 0 0 0 3px #eef8ff;
+}
+
+.update-profile-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+
+/* Disabled Department */
+
+.update-profile-form input:disabled {
+    background: #f4f7fa;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+
+/* File Input */
+
+.update-profile-form input[type="file"] {
+    padding: 10px;
+    background: #f8fbff;
+}
+
+
+/* Update Button */
+
+.update-profile-btn {
+    width: 100%;
+    background: #168fe3;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.update-profile-btn:hover {
+    background: #0f7dcc;
+}
+
+
+@media (max-width: 600px) {
+
+    .update-profile-container {
+        width: 92%;
+        padding: 30px 0;
+    }
+
+    .update-profile-header h1 {
+        font-size: 30px;
+    }
+
+    .update-profile-form {
+        padding: 25px 20px;
+    }
+
+    .profile-image,
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}

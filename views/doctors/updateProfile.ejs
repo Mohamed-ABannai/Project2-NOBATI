@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile | NOBATI</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/doctors.css">
+</head>
+<body>
+
+<%- include('../partials/navbar') %>
+
+<main class="update-profile-container">
+
+    <div class="update-profile-header">
+        <p>MY PROFILE</p>
+        <h1>Update Profile</h1>
+        <span>Update your professional and account information.</span>
+    </div>
+
+    <form action="/doctor/profile?_method=PUT" method="post" enctype="multipart/form-data" class="update-profile-form">
+
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                value="<%= doctor.user.username %>"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="<%= doctor.user.email %>"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                value="<%= doctor.user.phone || '' %>"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Department</label>
+            <input
+                type="text"
+                value="<%= doctor.department.name %>"
+                disabled
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="specialization">Specialization</label>
+            <input
+                type="text"
+                id="specialization"
+                name="specialization"
+                value="<%= doctor.specialization %>"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="consultationFee">Consultation Fee</label>
+            <input
+                type="number"
+                id="consultationFee"
+                name="consultationFee"
+                value="<%= doctor.consultationFee %>"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea
+                id="bio"
+                name="bio"
+                rows="5"
+            ><%= doctor.bio || '' %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Profile Image</label>
+            <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+            >
+        </div>
+
+        <button type="submit" class="update-profile-btn">
+            <i class="bi bi-check-lg"></i>
+            Update Profile
+        </button>
+
+    </form>
+
+</main>
+
+</body>
+</html>

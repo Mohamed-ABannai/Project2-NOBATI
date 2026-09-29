@@ -15,9 +15,20 @@
 <main class="doctors-container">
 
 <div class="doctors-header">
-    <p class="doctors-label">MEDICAL TEAM</p>
-    <h1>Our Doctors</h1>
-    <p>Find the right doctor for your appointment.</p>
+
+    <div>
+        <p class="doctors-label">MEDICAL TEAM</p>
+        <h1>Our Doctors</h1>
+        <p>Find the right doctor for your appointment.</p>
+    </div>
+
+    <% if(user && user.role === "admin"){ %>
+        <a href="/doctor/new" class="add-doctor-btn">
+            <i class="bi bi-plus-lg"></i>
+            Add Doctor
+        </a>
+    <% } %>
+
 </div>
 
 <div class="doctors-grid">
@@ -46,13 +57,24 @@
         </p>
 
         <div class="doctor-details">
-            <p><i class="bi bi-envelope"></i> <%= doctor.user.email %></p>
+
+            <p>
+                <i class="bi bi-envelope"></i>
+                <%= doctor.user.email %>
+            </p>
 
             <% if(doctor.user.phone){ %>
-                <p><i class="bi bi-telephone"></i> <%= doctor.user.phone %></p>
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    <%= doctor.user.phone %>
+                </p>
             <% } %>
 
-            <p><i class="bi bi-cash"></i> <%= doctor.consultationFee %> BHD</p>
+            <p>
+                <i class="bi bi-cash"></i>
+                <%= doctor.consultationFee %> BHD
+            </p>
+
         </div>
 
         <% if(doctor.bio){ %>
@@ -60,17 +82,23 @@
         <% } %>
 
         <% if(user && user.role === "admin"){ %>
-        <div class="doctor-actions">
-            <a href="/doctor/<%= doctor._id %>/edit">
-                <i class="bi bi-pencil"></i> Edit
-            </a>
 
-            <form action="/doctor/<%= doctor._id %>?_method=DELETE" method="post">
-                <button type="submit">
-                    <i class="bi bi-trash"></i> Delete
-                </button>
-            </form>
-        </div>
+            <div class="doctor-actions">
+
+                <a href="/doctor/<%= doctor._id %>/edit">
+                    <i class="bi bi-pencil"></i>
+                    Edit
+                </a>
+
+                <form action="/doctor/<%= doctor._id %>?_method=DELETE" method="post">
+                    <button type="submit">
+                        <i class="bi bi-trash"></i>
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+
         <% } %>
 
     </div>
