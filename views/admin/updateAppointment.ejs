@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Appointment | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<%- include('../partials/navbar.ejs') %>
+
+<main class="update-appointment">
+
+    <div class="update-appointment-header">
+
+        <p>APPOINTMENT MANAGEMENT</p>
+
+        <h1>Edit Appointment Date</h1>
+
+        <span>Change the date of this appointment.</span>
+
+    </div>
+
+    <form action="/admin/appointments/<%= appointment._id %>?_method=PUT" method="post" class="update-appointment-form">
+
+        <div class="form-group">
+
+            <label>Patient</label>
+
+            <input
+                type="text"
+                value="<%= appointment.patient.username %>"
+                disabled
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Doctor</label>
+
+            <input
+                type="text"
+                value="<%= appointment.doctor.specialization %>"
+                disabled
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="appointmentDate">Appointment Date</label>
+
+            <input
+                type="date"
+                name="appointmentDate"
+                id="appointmentDate"
+                value="<%= appointment.appointmentDate.toISOString().split('T')[0] %>"
+                required
+            >
+
+        </div>
+
+        <div class="update-appointment-actions">
+
+            <button type="submit">
+                <i class="bi bi-check-lg"></i>
+                Update Date
+            </button>
+
+            <a href="/admin/appointments">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</main>
+
+<script>
+    const today = new Date().toISOString().split('T')[0]
+    document.getElementById('appointmentDate').min = today
+</script>
+
+</body>
+
+</html>

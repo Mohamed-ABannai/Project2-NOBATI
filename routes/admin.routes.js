@@ -16,14 +16,14 @@ res.render('admin/manageUser.ejs',{allUsers:findAll})
 })
 
 
-router.get('/AllUser/:id/edit',async(req,res)=>{
+router.get('/AllUser/:id/edit',isAdmin,async(req,res)=>{
 
     const foundOne = await User.findById(req.params.id)
 
     res.render('admin/updateUser.ejs',{user:foundOne})
 })
 
-router.delete('/AllUser/:id',async(req,res)=>{
+router.delete('/AllUser/:id',isAdmin,async(req,res)=>{
 
  
 
@@ -65,5 +65,27 @@ router.put('/appointments/:id/cancel',isAdmin,async(req,res)=>{
     res.redirect('/admin/appointments')
 })
 
+router.get('/appointments/:id/edit',isAdmin,async(req,res)=>{
+
+    const appointment = await Appointment.findById(req.params.id)
+        .populate('patient')
+        .populate('doctor')
+
+    res.render('admin/updateAppointment.ejs',{
+        appointment:appointment
+    })
+})
+
+router.put('/appointments/:id',isAdmin,async(req,res)=>{
+
+    const appointmentUpdate = {
+        appointmentDate:req.body.appointmentDate
+    }
+
+    await Appointment.findByIdAndUpdate(req.params.id,appointmentUpdate
+    )
+
+    res.redirect('/admin/appointments')
+})
 
 module.exports = router;

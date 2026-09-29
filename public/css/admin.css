@@ -591,3 +591,100 @@
 .appointment-admin-actions button:hover {
     opacity: 0.9;
 }
+
+/* Update Appointment */
+
+.update-appointment {
+    width: 90%;
+    max-width: 650px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.update-appointment-header {
+    margin-bottom: 30px;
+}
+
+.update-appointment-header > p {
+    color: #168fe3;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.update-appointment-header h1 {
+    color: #082a5e;
+    font-size: 36px;
+    margin: 5px 0;
+}
+
+.update-appointment-header span {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.update-appointment-form {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.05);
+}
+
+.update-appointment-form .form-group {
+    margin-bottom: 20px;
+}
+
+.update-appointment-form label {
+    display: block;
+    color: #082a5e;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.update-appointment-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dbe7f0;
+    border-radius: 8px;
+    color: #082a5e;
+    font-size: 14px;
+    outline: none;
+}
+
+.update-appointment-form input:focus {
+    border-color: #168fe3;
+    box-shadow: 0 0 0 3px #eef8ff;
+}
+
+.update-appointment-form input:disabled {
+    background: #f8fbff;
+    color: #64748b;
+}
+
+.update-appointment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.update-appointment-actions button,
+.update-appointment-actions a {
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.update-appointment-actions button {
+    background: #168fe3;
+    color: #ffffff;
+    border: none;
+}
+
+.update-appointment-actions a {
+    background: #eef8ff;
+    color: #082a5e;
+}
