@@ -14,7 +14,9 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing cli
 
 ## Screenshots
 
-Screenshots of the NOBATI application can be added here.
+## Patient role Screen Shot
+
+
 
 ## Technologies Used
 
