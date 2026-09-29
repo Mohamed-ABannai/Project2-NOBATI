@@ -57,5 +57,13 @@ router.get('/appointments',isAdmin,async(req,res)=>{
     })
 })
 
+router.put('/appointments/:id/cancel',isAdmin,async(req,res)=>{
+
+   const foundOne= await Appointment.findByIdAndUpdate(req.params.id,{status:'cancelled'}
+    )
+
+    res.redirect('/admin/appointments')
+})
+
 
 module.exports = router;
