@@ -24,7 +24,7 @@ router.get('/new', isPatient, async (req, res) => {
         isActive: true
     }).populate('user')
 
-    res.render('appointments/createAppointments.ejs', { doctors })
+    res.render('appointments/createAppointments.ejs', { doctors:doctors })
 })
 
 
@@ -77,5 +77,20 @@ router.get('/:id/edit',isPatient,async(req,res)=>{
     })
 })
 
+
+
+router.put('/:id',async(req,res)=>{
+
+    const appointmentUpdate = {
+        doctor:req.body.doctor,
+        appointmentDate:req.body.appointmentDate,
+        appointmentTime:req.body.appointmentTime,
+        reason:req.body.reason
+    }
+
+    const foundOne =await Appointment.findByIdAndUpdate(req.params.id,appointmentUpdate)
+
+    res.redirect('/appointment')
+})
 
 module.exports = router;

@@ -2,19 +2,25 @@
     
     <% if(!user || user && user.role=='patient'){ %>
     <a href="/">Homepage</a>
+    <a href="/doctor/allDoctors">Doctors</a>
+    <a href="/departments/">Departments</a>
+    <a href="/appointment">My Appointments</a>
     <% } %>
 
     <% if(user && user.role=='admin') {%>
     <a href="/admin/">Homepage</a>
+    <a href="/doctor/allDoctors">Doctors</a>
+    <a href="/departments/">Departments</a>
     <% } %>
 
     <% if(user && user.role=='doctor') {%>
     <a href="/doctor/">Homepage</a>
+    <a href="/doctor/allDoctors">Doctors</a>
+    <a href="/departments/">Departments</a>
     <% } %>
 
     <% if (user){ %>
-    <a href="/doctor/allDoctors">Doctors</a>
-    <a href="/departments/">Departments</a>
+    
     <a href="/auth/sign-out">Logout</a>
     
 
