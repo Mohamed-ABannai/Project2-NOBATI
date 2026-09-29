@@ -1,7 +1,7 @@
 const User = require("../models/User")
-
+const {isAdmin}=require('../middleware/is-signed-in')
 const router = require("express").Router()
-
+const Appointment = require("../models/Appointment")
 
 router.get('/',(req,res)=>{
     res.render('admin/homepage.ejs')
@@ -45,5 +45,17 @@ router.put('/AllUser/:id',async(req,res)=>{
 
     res.redirect('/admin/AllUser')
 })
+
+router.get('/appointments',isAdmin,async(req,res)=>{
+
+    const appointments = await Appointment.find()
+        .populate('patient')
+        .populate('doctor')
+
+    res.render('admin/allAppointments.ejs',{
+        appointments:appointments
+    })
+})
+
 
 module.exports = router;

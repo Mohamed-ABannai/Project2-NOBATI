@@ -38,39 +38,52 @@ router.get("/sign-in", (req, res) => {
 
 
 router.post("/sign-in", async (req, res) => {
-// First, get the user from the database
-    const userInDatabase = await User.findOne({
-        username:req.body.username
-    })
 
-    if(!userInDatabase){
-        return res.send("Login failed. Please try again.")
-    }
+  // First, get the user from the database
+  const userInDatabase = await User.findOne({
+    username: req.body.username
+  });
 
-    if(!userInDatabase.isActive){
-        return res.send("Your account is inactive.")
-    }
-// There is a user! Time to test their password with bcrypt
-    const validPassword = bcrypt.compareSync(
-        req.body.password,
-        userInDatabase.password
-    )
+  if (!userInDatabase) {
+    return res.send("Login failed. Please try again.");
+  }
 
-    if(!validPassword){
-        return res.send("Login failed. Please try again.")
-    }
+  // Check if the user account is active
+  if (!userInDatabase.isActive) {
+    return res.send("Your account is inactive.");
+  }
+
+  // There is a user! Time to test their password with bcrypt
+  const validPassword = bcrypt.compareSync(
+    req.body.password,
+    userInDatabase.password
+  );
+
+  if (!validPassword) {
+    return res.send("Login failed. Please try again.");
+  }
 
   // There is a user AND they had the correct password. Time to make a session!
   // Avoid storing the password, even in hashed format, in the session
-  // If there is other data you want to save to `req.session.user`, do so here!
-    req.session.user = {
-        username:userInDatabase.username,
-        _id:userInDatabase._id,
-        role:userInDatabase.role
-    }
+  // Save the user information we need inside the session
+  req.session.user = {
+    username: userInDatabase.username,
+    _id: userInDatabase._id,
+    role: userInDatabase.role
+  };
 
-    res.redirect("/")
-})
+  // Redirect the user depending on their role
+  if (userInDatabase.role === "admin") {
+    return res.redirect("/admin/");
+  }
+
+  if (userInDatabase.role === "doctor") {
+    return res.redirect("/doctor/");
+  }
+
+  // Patient goes to the main homepage
+  res.redirect("/");
+});
 
 router.get("/sign-out", (req, res) => {
   req.session.destroy();

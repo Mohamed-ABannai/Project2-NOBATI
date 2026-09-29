@@ -420,3 +420,174 @@
     font-size: 12px;
     font-weight: 600;
 }
+
+/* Admin Appointments */
+
+.admin-appointments {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.admin-appointments-header {
+    margin-bottom: 30px;
+}
+
+.admin-appointments-header > p {
+    color: #168fe3;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.admin-appointments-header h1 {
+    color: #082a5e;
+    font-size: 36px;
+    margin: 5px 0;
+}
+
+.admin-appointments-header span {
+    color: #64748b;
+    font-size: 15px;
+}
+
+
+/* Table */
+
+.admin-appointments-table-container {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.05);
+}
+
+.admin-appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-appointments-table th {
+    background: #eef8ff;
+    color: #082a5e;
+    text-align: left;
+    padding: 15px 18px;
+    font-size: 13px;
+}
+
+.admin-appointments-table td {
+    padding: 17px 18px;
+    border-top: 1px solid #e3edf5;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.appointment-patient {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #082a5e;
+    font-weight: 600;
+}
+
+.appointment-patient i {
+    color: #168fe3;
+    font-size: 20px;
+}
+
+.admin-appointment-status {
+    display: inline-block;
+    background: #eef8ff;
+    color: #168fe3;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+
+/* No Appointments */
+
+.no-admin-appointments {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 15px;
+    padding: 60px 30px;
+    text-align: center;
+}
+
+.no-admin-appointments > i {
+    color: #168fe3;
+    font-size: 50px;
+}
+
+.no-admin-appointments h2 {
+    color: #082a5e;
+    margin: 15px 0 8px;
+}
+
+.no-admin-appointments p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .admin-appointments {
+        width: 92%;
+        padding: 30px 0;
+    }
+
+    .admin-appointments-header h1 {
+        font-size: 30px;
+    }
+
+    .admin-appointments-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-appointments-table {
+        min-width: 850px;
+    }
+}
+/* Admin Appointment Actions */
+
+.appointment-admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.appointment-admin-actions form {
+    margin: 0;
+}
+
+.appointment-admin-actions a,
+.appointment-admin-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 7px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.appointment-admin-actions a {
+    background: #168fe3;
+    color: #ffffff;
+}
+
+.appointment-admin-actions button {
+    background: #082a5e;
+    color: #ffffff;
+}
+
+.appointment-admin-actions a:hover,
+.appointment-admin-actions button:hover {
+    opacity: 0.9;
+}
