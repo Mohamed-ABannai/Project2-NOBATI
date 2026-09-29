@@ -414,3 +414,50 @@
         text-align: center;
     }
 }
+
+.appointment-doctor {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #eef8ff;
+    padding: 14px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.doctor-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    background: #168fe3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+}
+
+.doctor-info span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+.doctor-info h2 {
+    margin: 3px 0;
+    font-size: 18px;
+    color: #082a5e;
+}
+
+.doctor-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.doctor-info p i {
+    color: #168fe3;
+    margin-right: 4px;
+}

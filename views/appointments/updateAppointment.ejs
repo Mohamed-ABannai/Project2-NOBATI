@@ -40,13 +40,15 @@
                                 <% if(appointment.doctor.toString()===doctor._id.toString()){ %>
 
                                     <option value="<%= doctor._id %>" selected>
-                                        Dr. <%= doctor.user.username %>
+                                        Dr. <%= doctor.user.username %> - <%= doctor.department.name %> - <%=
+                                                    doctor.specialization %>
                                     </option>
 
                                     <% } else { %>
 
                                         <option value="<%= doctor._id %>">
-                                            Dr. <%= doctor.user.username %>
+                                            Dr. <%= doctor.user.username %> - <%= doctor.department.name %> - <%=
+                                                        doctor.specialization %>
                                         </option>
 
                                         <% } %>

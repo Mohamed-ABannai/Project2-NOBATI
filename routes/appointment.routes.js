@@ -4,13 +4,18 @@ const { isPatient } = require("../middleware/is-signed-in")
 const Doctor = require("../models/Doctor")
 const Department = require("../models/Department")
 
-router.get('/', isPatient, async (req, res) => {
+router.get('/',isPatient,async(req,res)=>{
 
     const appointments = await Appointment.find({
-        patient: req.session.user._id
-    }).populate('doctor')
+        patient:req.session.user._id
+    }).populate({
+        path:'doctor',
+        populate:['user','department']
+    })
 
-    res.render('appointments/allAppointments.ejs', { appointments: appointments })
+    res.render('appointments/allAppointments.ejs',{
+        appointments:appointments
+    })
 })
 
 router.get('/new', isPatient, async (req, res) => {
@@ -70,7 +75,8 @@ router.get('/:id/edit',isPatient,async(req,res)=>{
 
     const doctors = await Doctor.find({department:department._id,
         isActive:true
-    }).populate('user')
+    }).populate('user').populate('department')
+
 
     res.render('appointments/updateAppointment.ejs',{appointment:appointment,
         doctors:doctors

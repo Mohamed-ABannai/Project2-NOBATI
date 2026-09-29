@@ -68,9 +68,35 @@
 
                                 </div>
 
-                                <h2>
-                                    <%= appointment.doctor.specialization %>
-                                </h2>
+                                <div class="appointment-doctor">
+
+                                    <div class="doctor-icon">
+                                        <i class="bi bi-person-heart"></i>
+                                    </div>
+
+                                    <div class="doctor-info">
+
+                                        <span>
+                                            DOCTOR - <%= appointment.doctor.user.username %>
+                                        </span>
+
+                                        <h2>
+                                            <%= appointment.doctor.specialization %>
+                                        </h2>
+
+                                        <p>
+                                            <i class="bi bi-hospital"></i>
+                                            <%= appointment.doctor.department.name %>
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <i class="bi bi-cash-coin"></i>
+                                            <%= appointment.doctor.consultationFee %> BHD
+                                        </p>
+
+                                    </div>
+
+                                </div>
 
                                 <div class="appointment-info">
 
