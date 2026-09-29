@@ -729,6 +729,243 @@
     background: #0f7dcc;
 }
 
+/* Doctor Appointments */
+
+.doctor-appointments-container,
+.doctor-redirect-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 0;
+}
+
+.doctor-appointments-header {
+    margin-bottom: 30px;
+}
+
+.doctor-appointments-header p {
+    color: #168fe3;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.doctor-appointments-header h1 {
+    color: #082a5e;
+    font-size: 36px;
+    margin: 5px 0;
+}
+
+.doctor-appointments-header span {
+    color: #64748b;
+}
+
+.doctor-appointments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.doctor-appointment-card,
+.doctor-redirect-card {
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(8, 42, 94, 0.05);
+}
+
+.doctor-appointment-top,
+.doctor-redirect-patient {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.patient-info,
+.doctor-redirect-patient {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.patient-info > i,
+.doctor-redirect-patient > i {
+    color: #168fe3;
+    font-size: 32px;
+}
+
+.patient-info span,
+.doctor-redirect-patient span {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.patient-info h2,
+.doctor-redirect-patient h2 {
+    color: #082a5e;
+    font-size: 17px;
+    margin: 3px 0 0;
+}
+
+.doctor-appointment-status {
+    color: #168fe3;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.doctor-appointment-details {
+    border-top: 1px solid #e3edf5;
+    border-bottom: 1px solid #e3edf5;
+    margin: 20px 0;
+    padding: 14px 0;
+}
+
+.doctor-appointment-details p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 9px 0;
+}
+
+.doctor-appointment-details i {
+    color: #168fe3;
+    margin-right: 7px;
+}
+
+.doctor-appointment-details strong {
+    color: #082a5e;
+}
+
+.doctor-appointment-actions,
+.doctor-redirect-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.doctor-appointment-actions form {
+    flex: 1;
+}
+
+.doctor-appointment-actions button,
+.doctor-appointment-actions a,
+.doctor-redirect-actions button,
+.doctor-redirect-actions a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    width: 100%;
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.confirm-btn,
+.complete-btn,
+.doctor-redirect-actions button {
+    background: #168fe3;
+    color: #ffffff;
+}
+
+.cancel-btn,
+.doctor-redirect-actions a {
+    background: #f4f7fa;
+    color: #082a5e;
+}
+
+.redirect-btn {
+    background: #eef8ff;
+    color: #168fe3;
+}
+
+.doctor-redirect-container {
+    max-width: 750px;
+}
+
+.doctor-redirect-card {
+    max-width: 750px;
+}
+
+.doctor-redirect-form {
+    margin-top: 28px;
+}
+
+.doctor-redirect-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.doctor-redirect-form label {
+    color: #082a5e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.doctor-redirect-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dbe7f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #082a5e;
+    font: inherit;
+}
+
+.doctor-redirect-actions {
+    margin-top: 24px;
+}
+
+.doctor-redirect-actions a,
+.doctor-redirect-actions button {
+    width: auto;
+}
+
+.doctor-redirect-empty {
+    color: #64748b;
+    margin: 24px 0 0;
+}
+
+@media (max-width: 900px) {
+    .doctor-appointments-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .doctor-appointments-container,
+    .doctor-redirect-container {
+        width: 92%;
+        padding: 30px 0;
+    }
+
+    .doctor-appointments-header h1 {
+        font-size: 30px;
+    }
+
+    .doctor-appointments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-appointment-actions form,
+    .doctor-appointment-actions a {
+        flex-basis: 100%;
+    }
+}
+
 
 @media (max-width: 600px) {
 
