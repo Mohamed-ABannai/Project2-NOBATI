@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Patient | NOBATI</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<%- include('../partials/navbar.ejs') %>
+
+<main class="update-user-page">
+
+    <div class="update-user-header">
+        <p>USER MANAGEMENT</p>
+        <h1>Update Patient</h1>
+        <span>Edit the patient's account information.</span>
+    </div>
+
+    <div class="update-user-container">
+
+        <form action="/admin/AllUser/<%= user._id %>?_method=PUT" method="post" class="update-user-form">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="<%= user.username %>"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="<%= user.email %>"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value="<%= user.phone %>"
+                >
+            </div>
+
+            <div class="update-user-actions">
+
+                <a href="/admin/AllUser">
+                    Cancel
+                </a>
+
+                <button type="submit">
+                    <i class="bi bi-check-lg"></i>
+                    Update Patient
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>
