@@ -262,3 +262,20 @@
 .add-department-btn:hover{
     opacity:.9;
 }
+
+.form-group textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px 14px;
+    border:1px solid #e3edf5;
+    border-radius:8px;
+    font-size:14px;
+    outline:none;
+    resize:vertical;
+    min-height:120px;
+    font-family:inherit;
+}
+
+.form-group textarea:focus{
+    border-color:#168fe3;
+}
