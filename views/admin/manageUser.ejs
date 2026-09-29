@@ -14,108 +14,125 @@
 
 <body>
 
-    <%- include('../partials/navbar.ejs') %>
+<%- include('../partials/navbar.ejs') %>
 
-        <main class="manage-users">
+<main class="manage-users">
 
-            <div class="manage-users-header">
-                <p>USER MANAGEMENT</p>
-                <h1>Manage Patients</h1>
-                <span>View and manage registered patients.</span>
-            </div>
+    <div class="manage-users-header">
+        <p>USER MANAGEMENT</p>
+        <h1>Manage Patients</h1>
+        <span>View and manage registered patients.</span>
+    </div>
 
-            <% if(allUsers.length===0){ %>
+    <% if(allUsers.length === 0){ %>
 
-                <div class="no-users">
+        <div class="no-users">
 
-                    <i class="bi bi-people"></i>
+            <i class="bi bi-people"></i>
 
-                    <h2>No Patients Found</h2>
+            <h2>No Patients Found</h2>
 
-                    <p>There are currently no registered patients.</p>
+            <p>There are currently no registered patients.</p>
 
-                </div>
+        </div>
 
-                <% } else { %>
+    <% } else { %>
 
-                    <div class="users-table-container">
+        <div class="users-table-container">
 
-                        <table class="users-table">
+            <table class="users-table">
 
-                            <thead>
-                                <tr>
-                                    <th>Patient</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Role</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
 
-                            <tbody>
+                <tbody>
 
-                                <% for(let user of allUsers){ %>
+                    <% for(let user of allUsers){ %>
 
-                                    <tr>
+                        <tr>
 
-                                        <td>
-                                            <div class="patient-name">
-                                                <i class="bi bi-person-circle"></i>
-                                                <%= user.username %>
-                                            </div>
-                                        </td>
+                            <td>
+                                <div class="patient-name">
+                                    <i class="bi bi-person-circle"></i>
+                                    <%= user.username %>
+                                </div>
+                            </td>
 
-                                        <td>
-                                            <%= user.email %>
-                                        </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
 
-                                        <td>
-                                            <%= user.phone %>
-                                        </td>
+                            <td>
+                                <%= user.phone %>
+                            </td>
 
-                                        <td>
-                                            <span class="patient-role">
-                                                <%= user.role %>
-                                            </span>
-                                        </td>
+                            <td>
+                                <span class="patient-role">
+                                    <%= user.role %>
+                                </span>
+                            </td>
 
-                                        <td>
+                            <td>
 
-                                            <div class="user-actions">
+                                <% if(user.isActive){ %>
 
-                                                <a href="/admin/AllUser/<%= user._id %>/edit">
-                                                    <i class="bi bi-pencil"></i>
-                                                    Edit
-                                                </a>
+                                    <span class="status-active">
+                                        Active
+                                    </span>
 
-                                                <form action="/admin/AllUser/<%= user._id %>?_method=DELETE"
-                                                    method="post">
+                                <% } else { %>
 
-                                                    <button type="submit">
-                                                        <i class="bi bi-trash"></i>
-                                                        Delete
-                                                    </button>
+                                    <span class="status-inactive">
+                                        Inactive
+                                    </span>
 
-                                                </form>
+                                <% } %>
 
-                                            </div>
+                            </td>
 
-                                        </td>
+                            <td>
 
-                                    </tr>
+                                <div class="user-actions">
 
-                                    <% } %>
+                                    <a href="/admin/AllUser/<%= user._id %>/edit">
+                                        <i class="bi bi-pencil"></i>
+                                        Edit
+                                    </a>
 
-                            </tbody>
+                                    <form action="/admin/AllUser/<%= user._id %>?_method=DELETE" method="post">
 
-                        </table>
+                                        <button type="submit">
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+                                        </button>
 
-                    </div>
+                                    </form>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
 
                     <% } %>
 
-        </main>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    <% } %>
+
+</main>
 
 </body>
-
 </html>

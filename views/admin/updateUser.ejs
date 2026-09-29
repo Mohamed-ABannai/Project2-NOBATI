@@ -14,73 +14,70 @@
 
 <body>
 
-<%- include('../partials/navbar.ejs') %>
+    <%- include('../partials/navbar.ejs') %>
 
-<main class="update-user-page">
+        <main class="update-user-page">
 
-    <div class="update-user-header">
-        <p>USER MANAGEMENT</p>
-        <h1>Update Patient</h1>
-        <span>Edit the patient's account information.</span>
-    </div>
-
-    <div class="update-user-container">
-
-        <form action="/admin/AllUser/<%= user._id %>?_method=PUT" method="post" class="update-user-form">
-
-            <div class="form-group">
-                <label for="username">Username</label>
-
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value="<%= user.username %>"
-                    required
-                >
+            <div class="update-user-header">
+                <p>USER MANAGEMENT</p>
+                <h1>Update Patient</h1>
+                <span>Edit the patient's account information.</span>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
+            <div class="update-user-container">
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value="<%= user.email %>"
-                    required
-                >
+                <form action="/admin/AllUser/<%= user._id %>?_method=PUT" method="post" class="update-user-form">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" value="<%= user.username %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<%= user.email %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" value="<%= user.phone %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="isActive">Account Status</label>
+
+                        <select id="isActive" name="isActive">
+
+                            <% if(user.isActive){ %>
+                                <option value="true" selected>Active</option>
+                                <option value="false">Inactive</option>
+                                <% } else { %>
+                                    <option value="true">Active</option>
+                                    <option value="false" selected>Inactive</option>
+                                    <% } %>
+
+                        </select>
+                    </div>
+
+                    <div class="update-user-actions">
+
+                        <a href="/admin/AllUser">
+                            Cancel
+                        </a>
+
+                        <button type="submit">
+                            <i class="bi bi-check-lg"></i>
+                            Update Patient
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
 
-            <div class="form-group">
-                <label for="phone">Phone</label>
-
-                <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    value="<%= user.phone %>"
-                >
-            </div>
-
-            <div class="update-user-actions">
-
-                <a href="/admin/AllUser">
-                    Cancel
-                </a>
-
-                <button type="submit">
-                    <i class="bi bi-check-lg"></i>
-                    Update Patient
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</main>
+        </main>
 
 </body>
+
 </html>

@@ -324,7 +324,8 @@
     font-weight: 600;
 }
 
-.update-user-form input {
+.update-user-form input,
+.update-user-form select {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #dbe7f0;
@@ -332,9 +333,11 @@
     color: #082a5e;
     font-size: 14px;
     outline: none;
+    background: #ffffff;
 }
 
-.update-user-form input:focus {
+.update-user-form input:focus,
+.update-user-form select:focus {
     border-color: #168fe3;
     box-shadow: 0 0 0 3px #eef8ff;
 }
@@ -398,4 +401,22 @@
         width: 100%;
         text-align: center;
     }
+}
+
+.status-active {
+    background: #e8f8ef;
+    color: #198754;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-inactive {
+    background: #fdecec;
+    color: #dc3545;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
 }
