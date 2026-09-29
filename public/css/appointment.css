@@ -225,7 +225,7 @@
     }
 }
 
-/* Create Appointment */
+
 
 .appointment-form-container {
     max-width: 750px;
@@ -336,7 +336,7 @@
 }
 
 
-/* No Doctors Available */
+
 
 .no-doctors {
     text-align: center;
@@ -385,7 +385,7 @@
 }
 
 
-/* Mobile */
+
 
 @media (max-width: 600px) {
 

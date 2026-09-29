@@ -102,7 +102,7 @@
     }
 }
 
-/* Manage Patients */
+
 
 .manage-users {
     width: 90%;
@@ -219,7 +219,7 @@
 }
 
 
-/* No Patients */
+
 
 .no-users {
     background: #ffffff;
@@ -245,7 +245,7 @@
 }
 
 
-/* Mobile */
+
 
 @media (max-width: 700px) {
 
@@ -267,7 +267,7 @@
     }
 }
 
-/* Update Patient */
+
 
 .update-user-page {
     width: 90%;
@@ -421,7 +421,7 @@
     font-weight: 600;
 }
 
-/* Admin Appointments */
+
 
 .admin-appointments {
     width: 90%;
@@ -453,7 +453,7 @@
 }
 
 
-/* Table */
+
 
 .admin-appointments-table-container {
     background: #ffffff;
@@ -508,7 +508,7 @@
 }
 
 
-/* No Appointments */
+
 
 .no-admin-appointments {
     background: #ffffff;
@@ -534,7 +534,7 @@
 }
 
 
-/* Mobile */
+
 
 @media (max-width: 800px) {
 
@@ -555,7 +555,7 @@
         min-width: 850px;
     }
 }
-/* Admin Appointment Actions */
+
 
 .appointment-admin-actions {
     display: flex;
@@ -592,7 +592,7 @@
     opacity: 0.9;
 }
 
-/* Update Appointment */
+
 
 .update-appointment {
     width: 90%;
