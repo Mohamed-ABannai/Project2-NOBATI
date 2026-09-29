@@ -3,11 +3,11 @@ const {isAdmin}=require('../middleware/is-signed-in')
 const router = require("express").Router()
 const Appointment = require("../models/Appointment")
 
-router.get('/',(req,res)=>{
+router.get('/',isAdmin,(req,res)=>{
     res.render('admin/homepage.ejs')
 })
 
-router.get('/AllUser',async(req,res)=>{
+router.get('/AllUser',isAdmin,async(req,res)=>{
 
 const findAll= await User.find({role:'patient'})
 
@@ -32,7 +32,7 @@ router.delete('/AllUser/:id',isAdmin,async(req,res)=>{
     res.redirect('/admin/AllUser')
 })
 
-router.put('/AllUser/:id',async(req,res)=>{
+router.put('/AllUser/:id',isAdmin,async(req,res)=>{
 
     const userUpdate = {
         username:req.body.username,

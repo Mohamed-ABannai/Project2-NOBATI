@@ -4,7 +4,7 @@ const Department = require("../models/Department");
 const Appointment = require("../models/Appointment");
 const bcrypt = require("bcrypt");
 const multer = require("multer");
-const { isDoctor } = require("../middleware/is-signed-in");
+const { isSignedIn, isDoctor, isAdmin } = require("../middleware/is-signed-in");
 const router = require("express").Router()
 
 const storage = multer.memoryStorage()
@@ -15,7 +15,7 @@ router.get('/', isDoctor, async (req, res) => {
     res.render('doctors/homepage.ejs')
 })
 
-router.get('/new', async (req, res) => {
+router.get('/new', isAdmin, async (req, res) => {
 
     const departments = await Department.find()
 
@@ -24,7 +24,7 @@ router.get('/new', async (req, res) => {
     })
 })
 
-router.post('/new', upload.single("image"), async (req, res) => {
+router.post('/new', isAdmin, upload.single("image"), async (req, res) => {
 
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
 
@@ -51,7 +51,7 @@ router.post('/new', upload.single("image"), async (req, res) => {
     res.redirect('/doctor/allDoctors')
 })
 
-router.get('/allDoctors', async (req, res) => {
+router.get('/allDoctors', isSignedIn, async (req, res) => {
 
     const foundDoctors = await Doctor.find({
         isActive: true
@@ -242,7 +242,7 @@ router.put('/appointments/:id/redirect',isDoctor,async(req,res)=>{
     res.redirect('/doctor/appointments')
 })
 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', isAdmin, async (req, res) => {
 
     const foundone = await Doctor.findById(req.params.id)
         .populate('user')
@@ -256,7 +256,7 @@ router.get('/:id/edit', async (req, res) => {
     })
 })
 
-router.put('/:id', upload.single('image'), async (req, res) => {
+router.put('/:id', isAdmin, upload.single('image'), async (req, res) => {
 
     const foundDoctor = await Doctor.findById(req.params.id)
 
@@ -307,7 +307,7 @@ router.put('/:id', upload.single('image'), async (req, res) => {
     res.redirect('/doctor/allDoctors')
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAdmin, async (req, res) => {
 
     const foundDoctor = await Doctor.findById(req.params.id)
 

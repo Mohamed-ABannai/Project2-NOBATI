@@ -85,7 +85,7 @@ router.get('/:id/edit',isPatient,async(req,res)=>{
 
 
 
-router.put('/:id',async(req,res)=>{
+router.put('/:id',isPatient,async(req,res)=>{
 
     const appointmentUpdate = {
         doctor:req.body.doctor,
