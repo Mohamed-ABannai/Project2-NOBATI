@@ -88,12 +88,6 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing cli
 
 ![Manage Appointments](assests/ReadMe-Images/Admin/MangeAppointments.png)
 
-### Database Design
-
-#### NOBATI ERD
-
-![NOBATI ERD](assests/ReadMe-Images/ERD-NOBATI.png)
-
 
 ## Technologies Used
 
