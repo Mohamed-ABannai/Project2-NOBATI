@@ -307,6 +307,15 @@ http://localhost:3000
 - Custom 404 page.
 - Role-based navigation.
 
+
+## Extra Features
+1. role managment
+2. admin Dashboard
+3. css Library (bootstrap)
+4. amazing style?
+5. upload photo (as binary base64)
+
+
 ## Future Enhancements
 
 - Add appointment availability and time-slot validation to prevent double bookings.
