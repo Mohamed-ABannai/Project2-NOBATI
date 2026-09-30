@@ -14,7 +14,86 @@ The name **NOBATI** means **"My Turn"**, representing the idea of organizing cli
 
 ## Screenshots
 
-## Patient role Screen Shot
+### Authentication
+
+#### Sign In
+
+![Sign In](assests/ReadMe-Images/SignIN.png)
+
+#### Sign Up
+
+![Sign Up](assests/ReadMe-Images/Signup.png)
+
+### General Pages
+
+#### Departments
+
+![Departments](assests/ReadMe-Images/Departments.png)
+
+#### Doctors
+
+![Doctors](assests/ReadMe-Images/doctors.png)
+
+### Patient Role
+
+#### Patient Homepage
+
+![Patient Homepage](assests/ReadMe-Images/Patient/PatientHomePage.png)
+
+#### Book Appointment
+
+![Book Appointment](assests/ReadMe-Images/Patient/BookAppointment.png)
+
+#### My Appointments
+
+![My Appointments](assests/ReadMe-Images/Patient/MyAppointments.png)
+
+#### Update Appointment
+
+![Update Appointment](assests/ReadMe-Images/Patient/updateAppointment.png)
+
+### Doctor Role
+
+#### Doctor Homepage
+
+![Doctor Homepage](assests/ReadMe-Images/Doctor/DoctorHomepage.png)
+
+#### Doctor Appointments
+
+![Doctor Appointments](assests/ReadMe-Images/Doctor/Doctorapppointments.png)
+
+#### Update Profile
+
+![Update Profile](assests/ReadMe-Images/Doctor/UpdateProfile.png)
+
+### Admin Role
+
+#### Admin Homepage
+
+![Admin Homepage](assests/ReadMe-Images/Admin/adminHomePage.png)
+
+#### Manage Doctors
+
+![Manage Doctors](assests/ReadMe-Images/Admin/Editanddelete(Doctor).png)
+
+#### Manage Departments
+
+![Manage Departments](assests/ReadMe-Images/Admin/Manage(departments).png)
+
+#### Manage Users
+
+![Manage Users](assests/ReadMe-Images/Admin/ManageUser(Patient).png)
+
+#### Manage Appointments
+
+![Manage Appointments](assests/ReadMe-Images/Admin/MangeAppointments.png)
+
+### Database Design
+
+#### NOBATI ERD
+
+![NOBATI ERD](assests/ReadMe-Images/ERD-NOBATI.png)
+
 
 ## Technologies Used
 
